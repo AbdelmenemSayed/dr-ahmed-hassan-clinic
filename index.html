@@ -11,7 +11,7 @@
   <!-- Google Fonts: Inter & Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Supabase JS Client CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -27,16 +27,40 @@
     }
 
     body {
-      font-family: 'Inter', 'Cairo', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #F7FAFC;
       color: #0F172A;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
+    /* RTL Arabic Typography & Spacing Overrides */
     html[dir="rtl"] body {
-      font-family: 'Cairo', 'Inter', sans-serif;
+      font-family: 'Cairo', sans-serif !important;
+      line-height: 1.8;
+      letter-spacing: 0 !important;
+    }
+
+    html[dir="rtl"] h1, 
+    html[dir="rtl"] h2, 
+    html[dir="rtl"] h3, 
+    html[dir="rtl"] h4, 
+    html[dir="rtl"] h5, 
+    html[dir="rtl"] h6 {
+      font-family: 'Cairo', sans-serif !important;
+      line-height: 1.4 !important;
+      letter-spacing: 0 !important;
+    }
+
+    html[dir="rtl"] p,
+    html[dir="rtl"] span,
+    html[dir="rtl"] button,
+    html[dir="rtl"] input,
+    html[dir="rtl"] select,
+    html[dir="rtl"] textarea {
+      font-family: 'Cairo', sans-serif !important;
     }
 
     /* Custom Scrollbar */
@@ -51,48 +75,11 @@
       background: #1BA7E1;
       border-radius: 4px;
     }
-
-    /* Before/After Drag Slider */
-    .ba-container {
-      position: relative;
-      overflow: hidden;
-      user-select: none;
-    }
-    .ba-after-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-    .ba-before-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 50%;
-      object-fit: cover;
-      border-right: 3px solid #C8A45D;
-      z-index: 10;
-    }
-    html[dir="rtl"] .ba-before-img {
-      border-right: none;
-      border-left: 3px solid #C8A45D;
-    }
-    .ba-handle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-      cursor: ew-resize;
-    }
   </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
-  <!-- MAIN DESKTOP & MOBILE HEADER NAVBAR -->
+  <!-- MAIN HEADER NAVBAR -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       
@@ -110,20 +97,19 @@
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center space-x-7 rtl:space-x-reverse text-sm font-bold text-slate-700">
-        <button onclick="navigateToPage('home')" class="hover:text-[#1BA7E1] transition-colors" data-en="Home" data-ar="الرئيسية">Home</button>
-        <button onclick="navigateToPage('about')" class="hover:text-[#1BA7E1] transition-colors" data-en="About Doctor" data-ar="عن الطبيب">About Doctor</button>
-        <button onclick="navigateToPage('services')" class="hover:text-[#1BA7E1] transition-colors" data-en="Services" data-ar="الخدمات">Services</button>
-        <button onclick="navigateToPage('beforeafter')" class="hover:text-[#1BA7E1] transition-colors" data-en="Before & After" data-ar="قبل وبعد">Before & After</button>
-        <button onclick="navigateToPage('certificates')" class="hover:text-[#1BA7E1] transition-colors" data-en="Certificates" data-ar="الشهادات">Certificates</button>
-        <button onclick="navigateToPage('reviews')" class="hover:text-[#1BA7E1] transition-colors" data-en="Reviews" data-ar="آراء المرضى">Reviews</button>
-        <button onclick="navigateToPage('contact')" class="hover:text-[#1BA7E1] transition-colors" data-en="Contact" data-ar="اتصل بنا">Contact</button>
+      <nav class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse text-sm font-bold text-slate-700">
+        <button onclick="navigateToPage('home')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Home" data-ar="الرئيسية">Home</button>
+        <button onclick="navigateToPage('about')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="About Doctor" data-ar="عن الطبيب">About Doctor</button>
+        <button onclick="navigateToPage('services')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Services" data-ar="الخدمات">Services</button>
+        <button onclick="navigateToPage('certificates')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Certificates" data-ar="الشهادات">Certificates</button>
+        <button onclick="navigateToPage('reviews')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Reviews" data-ar="آراء المرضى">Reviews</button>
+        <button onclick="navigateToPage('contact')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Contact" data-ar="اتصل بنا">Contact</button>
       </nav>
 
       <!-- Header Action Buttons (Language Switcher + Booking CTA) -->
       <div class="flex items-center gap-3">
         <!-- Language Switcher Button -->
-        <button onclick="toggleLanguage()" id="lang-toggle-btn" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0B1F33] font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 shadow-sm">
+        <button onclick="toggleLanguage()" id="lang-toggle-btn" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0B1F33] font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 shadow-sm">
           <span>🌐</span>
           <span id="lang-label">العربية</span>
         </button>
@@ -144,13 +130,13 @@
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-drawer" class="hidden lg:hidden bg-[#0B1F33] text-white p-5 space-y-4 text-sm font-semibold border-b border-slate-800">
-      <button onclick="navigateToPage('home'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="Home" data-ar="الرئيسية">Home</button>
-      <button onclick="navigateToPage('about'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="About Doctor" data-ar="عن الطبيب">About Doctor</button>
-      <button onclick="navigateToPage('services'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="Services" data-ar="الخدمات">Services</button>
-      <button onclick="navigateToPage('beforeafter'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="Before & After" data-ar="قبل وبعد">Before & After</button>
-      <button onclick="navigateToPage('certificates'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="Certificates" data-ar="الشهادات">Certificates</button>
-      <button onclick="navigateToPage('reviews'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 border-b border-slate-800" data-en="Reviews" data-ar="آراء المرضى">Reviews</button>
-      <button onclick="navigateToPage('booking'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2 text-[#1BA7E1] font-bold" data-en="Book Appointment" data-ar="احجز موعدك الآن">Book Appointment</button>
+      <button onclick="navigateToPage('home'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="Home" data-ar="الرئيسية">Home</button>
+      <button onclick="navigateToPage('about'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="About Doctor" data-ar="عن الطبيب">About Doctor</button>
+      <button onclick="navigateToPage('services'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="Services" data-ar="الخدمات">Services</button>
+      <button onclick="navigateToPage('certificates'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="Certificates" data-ar="الشهادات">Certificates</button>
+      <button onclick="navigateToPage('reviews'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="Reviews" data-ar="آراء المرضى">Reviews</button>
+      <button onclick="navigateToPage('contact'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 border-b border-slate-800" data-en="Contact" data-ar="اتصل بنا">Contact</button>
+      <button onclick="navigateToPage('booking'); toggleMobileMenu()" class="block w-full text-left rtl:text-right py-2.5 text-[#1BA7E1] font-bold" data-en="Book Appointment" data-ar="احجز موعدك الآن">Book Appointment</button>
     </div>
   </header>
 
@@ -162,48 +148,49 @@
     <div id="page-home" class="site-page">
       <!-- Hero Section -->
       <section class="relative bg-gradient-to-b from-white via-sky-50/40 to-[#F7FAFC] py-16 md:py-24 border-b border-slate-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 items-center gap-12">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 items-center gap-12 lg:gap-16">
+          
           <!-- Text Content -->
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider">
-              <span class="w-2 h-2 rounded-full bg-[#1BA7E1] animate-pulse"></span>
+          <div class="lg:col-span-7 space-y-7">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 border border-sky-200 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#1BA7E1] animate-pulse"></span>
               <span data-en="Cosmetic Dentistry & Dental Implants Specialist" data-ar="أخصائي تجميل وزراعة الأسنان">Cosmetic Dentistry & Dental Implants Specialist</span>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-extrabold text-[#0B1F33] leading-tight">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B1F33] leading-tight sm:leading-tight lg:leading-tight">
               <span data-en="A Healthier Smile" data-ar="ابتسامة صحية..">A Healthier Smile</span> <br>
-              <span class="text-[#1BA7E1]" data-en="A Happier You" data-ar="لحياة أجمل وأثق">A Happier You</span>
+              <span class="text-[#1BA7E1]" data-en="A Happier You" data-ar="لحياة أكثر ثقة وجمالاً">A Happier You</span>
             </h1>
 
-            <p class="text-lg text-slate-600 max-w-xl leading-relaxed" data-en='"Creating confident smiles with advanced dental care." Specialized personalized treatments delivered with painless techniques and state-of-the-art medical technology.' data-ar='"صناعة ابتسامة واثقة بأحدث تقنيات العناية بالأسنان." تقديم علاجات مخصصة بدون ألم وباستخدام أحدث الأجهزة الطبية الرقمية.'>
+            <p class="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed sm:leading-relaxed" data-en='"Creating confident smiles with advanced dental care." Specialized personalized treatments delivered with painless techniques and state-of-the-art medical technology.' data-ar='"صناعة ابتسامة واثقة بأحدث تقنيات العناية بالأسنان." نقدم علاجات مخصصة بدون ألم وباستخدام أحدث الأجهزة والتقنيات الطبية العالمية.'>
               "Creating confident smiles with advanced dental care." Specialized personalized treatments delivered with painless techniques and state-of-the-art medical technology.
             </p>
 
             <!-- Buttons -->
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-              <button onclick="navigateToPage('booking')" class="px-7 py-3.5 rounded-xl bg-[#1BA7E1] hover:bg-[#1594c9] text-white font-bold text-base transition-all shadow-lg shadow-sky-500/25 flex items-center gap-2">
-                <span data-en="Book Appointment" data-ar="احجز موعدك">Book Appointment</span>
+            <div class="flex flex-wrap items-center gap-4 pt-3">
+              <button onclick="navigateToPage('booking')" class="px-8 py-4 rounded-xl bg-[#1BA7E1] hover:bg-[#1594c9] text-white font-bold text-base transition-all shadow-lg shadow-sky-500/25 flex items-center gap-2.5">
+                <span data-en="Book Appointment" data-ar="احجز موعدك الآن">Book Appointment</span>
                 <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </button>
 
-              <button onclick="navigateToPage('about')" class="px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#0B1F33] font-bold text-base border border-slate-200 transition-all shadow-sm" data-en="Learn More" data-ar="اقرأ المزيد">
+              <button onclick="navigateToPage('about')" class="px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#0B1F33] font-bold text-base border border-slate-300 transition-all shadow-sm" data-en="Learn More" data-ar="عن الدكتور أحمد">
                 Learn More
               </button>
             </div>
 
             <!-- Trust Indicators -->
-            <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-6">
+            <div class="pt-8 border-t border-slate-200/90 grid grid-cols-3 gap-6">
               <div class="space-y-1">
-                <div class="text-2xl md:text-3xl font-extrabold text-[#0B1F33]">12+</div>
-                <div class="text-xs text-slate-500 font-medium" data-en="Years of Experience" data-ar="عاماً من الخبرة">Years of Experience</div>
+                <div class="text-2xl sm:text-3xl font-extrabold text-[#0B1F33]">12+</div>
+                <div class="text-xs sm:text-sm text-slate-500 font-medium" data-en="Years of Experience" data-ar="عاماً من الخبرة الطبية">Years of Experience</div>
               </div>
               <div class="space-y-1 border-l border-slate-200 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-6 pl-6">
-                <div class="text-2xl md:text-3xl font-extrabold text-[#0B1F33]">5,000+</div>
-                <div class="text-xs text-slate-500 font-medium" data-en="Happy Patients" data-ar="مريض سعيد">Happy Patients</div>
+                <div class="text-2xl sm:text-3xl font-extrabold text-[#0B1F33]">5,000+</div>
+                <div class="text-xs sm:text-sm text-slate-500 font-medium" data-en="Happy Patients" data-ar="مريض سعيد">Happy Patients</div>
               </div>
               <div class="space-y-1 border-l border-slate-200 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-6 pl-6">
-                <div class="text-2xl md:text-3xl font-extrabold text-[#C8A45D]" data-en="International" data-ar="اعتمادات">International</div>
-                <div class="text-xs text-slate-500 font-medium" data-en="Certificates & Awards" data-ar="شهادات وجوائز دولية">Certificates & Awards</div>
+                <div class="text-2xl sm:text-3xl font-extrabold text-[#C8A45D]" data-en="International" data-ar="اعتمادات دولية">International</div>
+                <div class="text-xs sm:text-sm text-slate-500 font-medium" data-en="Certificates & Awards" data-ar="شهادات وجوائز عالمية">Certificates & Awards</div>
               </div>
             </div>
           </div>
@@ -215,26 +202,26 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F33]/90 via-transparent to-black/20"></div>
 
                 <div class="relative z-10 flex justify-end">
-                  <span class="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0B1F33] text-xs font-bold shadow-md" data-en="⭐ 4.9/5 Patient Rating" data-ar="⭐ ٤.٩/٥ تقييم المرضى">
+                  <span class="px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#0B1F33] text-xs font-bold shadow-md" data-en="⭐ 4.9/5 Patient Rating" data-ar="⭐ ٤.٩/٥ تقييم المرضى">
                     ⭐ 4.9/5 Patient Rating
                   </span>
                 </div>
 
-                <div class="relative z-10 text-white space-y-1">
-                  <h3 class="text-xl font-bold" data-en="Dr. Ahmed Hassan" data-ar="د. أحمد حسن">Dr. Ahmed Hassan</h3>
-                  <p class="text-xs text-sky-200 font-medium" data-en="Cosmetic Dentistry & Implant Specialist" data-ar="أخصائي تجميل وزراعة الأسنان">Cosmetic Dentistry & Implant Specialist</p>
+                <div class="relative z-10 text-white space-y-1.5">
+                  <h3 class="text-2xl font-bold" data-en="Dr. Ahmed Hassan" data-ar="د. أحمد حسن">Dr. Ahmed Hassan</h3>
+                  <p class="text-xs sm:text-sm text-sky-200 font-medium" data-en="Cosmetic Dentistry & Implant Specialist" data-ar="أخصائي تجميل وزراعة الأسنان">Cosmetic Dentistry & Implant Specialist</p>
                   <div class="pt-2 flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                    <span class="text-[11px] text-emerald-200 font-semibold" data-en="Available for Consultations" data-ar="متاح للاستشارات الطبية">Available for Consultations</span>
+                    <span class="text-xs text-emerald-200 font-semibold" data-en="Available for Consultations" data-ar="متاح للحجز والاستشارات">Available for Consultations</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="absolute -bottom-6 -left-6 rtl:-right-6 rtl:left-auto bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 max-w-xs">
-              <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-lg">🏆</div>
+            <div class="absolute -bottom-6 -left-6 rtl:-right-6 rtl:left-auto bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3.5 max-w-xs">
+              <div class="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-xl shrink-0">🏆</div>
               <div>
-                <div class="text-xs font-bold text-slate-800" data-en="ICOI & AACD Certified" data-ar="زمالة الجمعية الدولية والبريطانية">ICOI & AACD Certified</div>
+                <div class="text-xs font-bold text-slate-800" data-en="ICOI & AACD Certified" data-ar="زمالة الجمعية الدولية والأمريكية">ICOI & AACD Certified</div>
                 <div class="text-[11px] text-slate-500" data-en="Global Implant Board Member" data-ar="عضو المجلس الدولي لزراعة الأسنان">Global Implant Board Member</div>
               </div>
             </div>
@@ -244,85 +231,63 @@
 
       <!-- Services Overview Grid -->
       <section class="py-20 max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
-          <div class="text-xs font-extrabold text-[#1BA7E1] uppercase tracking-widest" data-en="Our Expertise" data-ar="خبراتنا الطبية">Our Expertise</div>
-          <h2 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Comprehensive Dental Services" data-ar="خدمات علاج وتجميل الأسنان">Comprehensive Dental Services</h2>
-          <p class="text-slate-600 text-sm" data-en="Providing top-tier dental treatments tailored to your comfort and long-term oral health." data-ar="تقديم أفضل العلاجات الطبية المصممة لراحتك وصحة أسنانك على المدى الطويل.">Providing top-tier dental treatments tailored to your comfort and long-term oral health.</p>
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-14">
+          <div class="text-xs font-extrabold text-[#1BA7E1] uppercase tracking-widest" data-en="Our Expertise" data-ar="خدماتنا الطبية">Our Expertise</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0B1F33]" data-en="Comprehensive Dental Services" data-ar="تخصصات وعلاجات الأسنان">Comprehensive Dental Services</h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-en="Providing top-tier dental treatments tailored to your comfort and long-term oral health." data-ar="تقديم أفضل العلاجات الطبية المصممة خصيصاً لراحتك وضمان صحة أسنانك على المدى الطويل.">Providing top-tier dental treatments tailored to your comfort and long-term oral health.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+          <div class="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between space-y-6">
             <div class="space-y-4">
               <div class="w-14 h-14 rounded-2xl bg-sky-50 group-hover:bg-[#1BA7E1] transition-colors flex items-center justify-center text-[#1BA7E1] group-hover:text-white">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
               </div>
               <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Dental Implants" data-ar="زراعة الأسنان">Dental Implants</h3>
-              <p class="text-slate-600 text-sm leading-relaxed" data-en="Permanent, natural-looking tooth replacement using premium titanium implants and 3D digital planning." data-ar="تعويض الأسنان المفقودة بشكل دائم وطبيعي باستخدام غرسات التيتانيوم الألمانية وحسابات ثلاثية الأبعاد.">Permanent, natural-looking tooth replacement using premium titanium implants and 3D digital planning.</p>
+              <p class="text-slate-600 text-sm leading-relaxed" data-en="Permanent, natural-looking tooth replacement using premium titanium implants and 3D digital planning." data-ar="تعويض الأسنان المفقودة بشكل دائم وطبيعي باستخدام أحدث غرسات التيتانيوم وتخطيط ثلاثي الأبعاد.">Permanent, natural-looking tooth replacement using premium titanium implants and 3D digital planning.</p>
             </div>
-            <div class="pt-6">
-              <button onclick="navigateToPage('service-detail')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-1.5 transition-colors">
-                <span data-en="Learn More" data-ar="التفاصيل">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
+            <div class="pt-4">
+              <button onclick="navigateToPage('service-detail')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-2 transition-colors">
+                <span data-en="Learn More" data-ar="تفاصيل الخدمة">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
               </button>
             </div>
           </div>
 
-          <div class="bg-white p-8 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+          <div class="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between space-y-6">
             <div class="space-y-4">
               <div class="w-14 h-14 rounded-2xl bg-amber-50 group-hover:bg-[#C8A45D] transition-colors flex items-center justify-center text-[#C8A45D] group-hover:text-white">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
               </div>
               <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Hollywood Smile" data-ar="ابتسامة هوليود">Hollywood Smile</h3>
-              <p class="text-slate-600 text-sm leading-relaxed" data-en="Custom porcelain veneers designed to match your facial features for a radiant, picture-perfect smile." data-ar="عدسات فينير إيماكس فائقة الدقة مصممة خصيصاً لتناسب ملامح وجهك لابتسامة ساحرة.">Custom porcelain veneers designed to match your facial features for a radiant, picture-perfect smile.</p>
+              <p class="text-slate-600 text-sm leading-relaxed" data-en="Custom porcelain veneers designed to match your facial features for a radiant, picture-perfect smile." data-ar="عدسات فينير إيماكس فائقة الدقة مصممة خصيصاً لتناسب ملامح وجهك لابتسامة ساحرة وناصعة.">Custom porcelain veneers designed to match your facial features for a radiant, picture-perfect smile.</p>
             </div>
-            <div class="pt-6">
-              <button onclick="navigateToPage('services')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-1.5 transition-colors">
-                <span data-en="Learn More" data-ar="التفاصيل">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
+            <div class="pt-4">
+              <button onclick="navigateToPage('services')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-2 transition-colors">
+                <span data-en="Learn More" data-ar="تفاصيل الخدمة">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
               </button>
             </div>
           </div>
 
-          <div class="bg-white p-8 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+          <div class="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between space-y-6">
             <div class="space-y-4">
               <div class="w-14 h-14 rounded-2xl bg-sky-50 group-hover:bg-[#1BA7E1] transition-colors flex items-center justify-center text-[#1BA7E1] group-hover:text-[#0B1F33]">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path></svg>
               </div>
               <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Laser Teeth Whitening" data-ar="تبييض الأسنان بالليزر">Laser Teeth Whitening</h3>
-              <p class="text-slate-600 text-sm leading-relaxed" data-en="Fast, safe whitening session that brightens your smile up to 8 shades in less than 45 minutes." data-ar="جلسة تبييض آمنة وسريعة تمنحك ابتسامة أنصع بـ ٨ درجات في أقل من ٤٥ دقيقة.">Fast, safe whitening session that brightens your smile up to 8 shades in less than 45 minutes.</p>
+              <p class="text-slate-600 text-sm leading-relaxed" data-en="Fast, safe whitening session that brightens your smile up to 8 shades in less than 45 minutes." data-ar="جلسة تبييض سريعة وآمنة تمنحك أسنان أكثر بياضاً بـ ٨ درجات في أقل من ٤٥ دقيقة.">Fast, safe whitening session that brightens your smile up to 8 shades in less than 45 minutes.</p>
             </div>
-            <div class="pt-6">
-              <button onclick="navigateToPage('services')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-1.5 transition-colors">
-                <span data-en="Learn More" data-ar="التفاصيل">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
+            <div class="pt-4">
+              <button onclick="navigateToPage('services')" class="text-sm font-bold text-[#1BA7E1] group-hover:text-[#0B1F33] flex items-center gap-2 transition-colors">
+                <span data-en="Learn More" data-ar="تفاصيل الخدمة">Learn More</span> <span class="rtl:rotate-180">&rarr;</span>
               </button>
             </div>
           </div>
         </div>
 
-        <div class="mt-12 text-center">
-          <button onclick="navigateToPage('services')" class="px-8 py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-[#1BA7E1] transition-colors" data-en="View All Dental Services" data-ar="عرض جميع الخدمات الطبية">
+        <div class="mt-14 text-center">
+          <button onclick="navigateToPage('services')" class="px-8 py-3.5 rounded-xl bg-[#0B1F33] text-white font-bold text-sm hover:bg-[#1BA7E1] transition-colors shadow-md" data-en="View All Dental Services" data-ar="استعرض جميع الخدمات الطبية">
             View All Dental Services
           </button>
-        </div>
-      </section>
-
-      <!-- Before/After Quick Preview -->
-      <section class="py-16 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 items-center gap-12">
-          <div class="md:col-span-5 space-y-6">
-            <span class="px-3 py-1 rounded-full bg-amber-400/20 text-[#C8A45D] text-xs font-bold uppercase tracking-wider" data-en="Real Results" data-ar="نتائج حقيقية">Real Results</span>
-            <h2 class="text-3xl font-extrabold" data-en="Transforming Smiles Every Single Day" data-ar="نصنع تحولاً حقيقياً في الابتسامة يومياً">Transforming Smiles Every Single Day</h2>
-            <p class="text-slate-400 text-sm leading-relaxed" data-en="Explore real patient transformations before and after our specialized cosmetic and implant treatments." data-ar="استكشف تحولات المرضى قبل وبعد إجراء علاجات التجميل والزراعة المتقدمة.">Explore real patient transformations before and after our specialized cosmetic and implant treatments.</p>
-            <button onclick="navigateToPage('beforeafter')" class="px-6 py-3 rounded-xl bg-[#1BA7E1] hover:bg-[#1493c8] font-bold text-sm transition-colors" data-en="Open Interactive Slider Gallery" data-ar="افتح معرض النتائج التفاعلي">
-              Open Interactive Slider Gallery
-            </button>
-          </div>
-          <div class="md:col-span-7">
-            <div class="rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl relative aspect-[16/9] bg-slate-800">
-              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Smile transformation preview">
-              <div class="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg text-xs font-bold text-white" data-en="Full Mouth Rehabilitation • 3 Weeks" data-ar="تأهيل فمي كامل • 3 أسابيع">
-                Full Mouth Rehabilitation • 3 Weeks
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
@@ -338,27 +303,27 @@
         </div>
         <div class="lg:col-span-7 space-y-6">
           <div class="space-y-2">
-            <span class="text-xs font-extrabold text-[#C8A45D] uppercase tracking-widest" data-en="About The Specialist" data-ar="السيرة الذاتية">About The Specialist</span>
+            <span class="text-xs font-extrabold text-[#C8A45D] uppercase tracking-widest" data-en="About The Specialist" data-ar="السيرة الذاتية للطبيب">About The Specialist</span>
             <h1 class="text-3xl md:text-4xl font-extrabold text-[#0B1F33]" data-en="Dr. Ahmed Hassan" data-ar="د. أحمد حسن">Dr. Ahmed Hassan</h1>
-            <p class="text-sm font-semibold text-[#1BA7E1]" data-en="Specialist Dentist in Cosmetic Dentistry & Dental Implants" data-ar="استشاري طب وتجميل وزراعة الأسنان">Specialist Dentist in Cosmetic Dentistry & Dental Implants</p>
+            <p class="text-sm sm:text-base font-semibold text-[#1BA7E1]" data-en="Specialist Dentist in Cosmetic Dentistry & Dental Implants" data-ar="استشاري طب وتجميل وزراعة الأسنان">Specialist Dentist in Cosmetic Dentistry & Dental Implants</p>
           </div>
 
-          <p class="text-slate-600 text-sm leading-relaxed" data-en="Dr. Ahmed Hassan is a renowned dental specialist with over 12 years of experience in reconstructive implantology, smile design, and advanced restorative dentistry. Committed to patient comfort, he combines digital precision with gentle care to achieve natural, lifelong results." data-ar="الدكتور أحمد حسن طبيب وخبير أسنان متخصص يمتلك أكثر من ١٢ عاماً من الخبرة في زراعة وتأهيل الأسنان وتصميم الابتسامة. يلتزم بتقديم أقصى درجات الراحة للمرضى بالدمج بين الدقة الرقمية والعناية الفائقة لتحقيق نتائج طبيعية تدوم مدى الحياة.">
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-en="Dr. Ahmed Hassan is a renowned dental specialist with over 12 years of experience in reconstructive implantology, smile design, and advanced restorative dentistry. Committed to patient comfort, he combines digital precision with gentle care to achieve natural, lifelong results." data-ar="الدكتور أحمد حسن طبيب وخبير أسنان متخصص يمتلك أكثر من ١٢ عاماً من الخبرة الإكلينيكية في زراعة وتأهيل الأسنان وتصميم الابتسامة. يلتزم بتقديم أقصى درجات الراحة للمرضى بالدمج بين الدقة الرقمية والعناية الفائقة لتحقيق نتائج طبيعية تدوم مدى الحياة.">
             Dr. Ahmed Hassan is a renowned dental specialist with over 12 years of experience in reconstructive implantology, smile design, and advanced restorative dentistry. Committed to patient comfort, he combines digital precision with gentle care to achieve natural, lifelong results.
           </p>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-            <div class="bg-sky-50 p-4 rounded-xl text-center">
-              <div class="text-xl font-bold text-[#0B1F33]">12+ Yrs</div>
-              <div class="text-[11px] text-slate-500" data-en="Clinical Experience" data-ar="خبرة إكلينيكية">Clinical Experience</div>
+            <div class="bg-sky-50 p-5 rounded-2xl text-center space-y-1">
+              <div class="text-2xl font-extrabold text-[#0B1F33]">12+ Yrs</div>
+              <div class="text-xs text-slate-500 font-medium" data-en="Clinical Experience" data-ar="خبرة إكلينيكية">Clinical Experience</div>
             </div>
-            <div class="bg-sky-50 p-4 rounded-xl text-center">
-              <div class="text-xl font-bold text-[#0B1F33]">5,000+</div>
-              <div class="text-[11px] text-slate-500" data-en="Patients Treated" data-ar="مريض عولج بنجاح">Patients Treated</div>
+            <div class="bg-sky-50 p-5 rounded-2xl text-center space-y-1">
+              <div class="text-2xl font-extrabold text-[#0B1F33]">5,000+</div>
+              <div class="text-xs text-slate-500 font-medium" data-en="Patients Treated" data-ar="مريض عولج بنجاح">Patients Treated</div>
             </div>
-            <div class="bg-amber-50 p-4 rounded-xl text-center col-span-2 sm:col-span-1">
-              <div class="text-xl font-bold text-[#C8A45D]">99.4%</div>
-              <div class="text-[11px] text-slate-500" data-en="Success Rate" data-ar="نسبة النجاح">Success Rate</div>
+            <div class="bg-amber-50 p-5 rounded-2xl text-center col-span-2 sm:col-span-1 space-y-1">
+              <div class="text-2xl font-extrabold text-[#C8A45D]">99.4%</div>
+              <div class="text-xs text-slate-500 font-medium" data-en="Success Rate" data-ar="نسبة نجاح العمليات">Success Rate</div>
             </div>
           </div>
         </div>
@@ -370,44 +335,44 @@
     <div id="page-services" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Our Dental Treatments" data-ar="خدماتنا وعلاجات الأسنان">Our Dental Treatments</h1>
-        <p class="text-slate-600 text-sm" data-en="Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth." data-ar="اكتشف الحلول الطبية المتخصصة لاستعادة صحة وجمال أسنانك بأعلى المعايير.">Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth.</p>
+        <p class="text-slate-600 text-sm leading-relaxed" data-en="Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth." data-ar="اكتشف الحلول الطبية المتخصصة لاستعادة صحة وجمال أسنانك بأعلى معايير الجودة والتكنولوجيا.">Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-          <div class="h-48 bg-slate-100 overflow-hidden relative">
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
+          <div class="h-52 bg-slate-100 overflow-hidden relative">
             <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Implants">
           </div>
           <div class="p-6 space-y-4">
             <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Dental Implants" data-ar="زراعة الأسنان">Dental Implants</h3>
-            <p class="text-slate-600 text-xs leading-relaxed" data-en="State-of-the-art titanium implants to permanently replace missing teeth with natural look and feel." data-ar="غرسات التيتانيوم الألمانية لتعويض الأسنان المفقودة بشكل دائم وطبيعي.">State-of-the-art titanium implants to permanently replace missing teeth with natural look and feel.</p>
-            <button onclick="navigateToPage('service-detail')" class="w-full py-2.5 rounded-xl bg-[#1BA7E1] text-white font-bold text-xs hover:bg-[#1392c7] transition-colors" data-en="View Service Details" data-ar="عرض تفاصيل الخدمة">
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-en="State-of-the-art titanium implants to permanently replace missing teeth with natural look and feel." data-ar="غرسات التيتانيوم الألمانية لتعويض الأسنان المفقودة بشكل دائم وطبيعي.">State-of-the-art titanium implants to permanently replace missing teeth with natural look and feel.</p>
+            <button onclick="navigateToPage('service-detail')" class="w-full py-3 rounded-xl bg-[#1BA7E1] text-white font-bold text-xs hover:bg-[#1392c7] transition-colors" data-en="View Service Details" data-ar="عرض تفاصيل الخدمة">
               View Service Details
             </button>
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-          <div class="h-48 bg-slate-100 overflow-hidden relative">
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
+          <div class="h-52 bg-slate-100 overflow-hidden relative">
             <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Veneers">
           </div>
           <div class="p-6 space-y-4">
             <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Hollywood Smile" data-ar="ابتسامة هوليود">Hollywood Smile</h3>
-            <p class="text-slate-600 text-xs leading-relaxed" data-en="Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation." data-ar="عدسات فينير إيماكس لتغيير كامل مظهر الابتسامة بشكل تناسقي جذاب.">Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation.</p>
-            <button onclick="navigateToPage('booking')" class="w-full py-2.5 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة">
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-en="Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation." data-ar="عدسات فينير إيماكس لتغيير كامل مظهر الابتسامة بشكل تناسقي جذاب.">Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation.</p>
+            <button onclick="navigateToPage('booking')" class="w-full py-3 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة كشف">
               Book Consultation
             </button>
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-          <div class="h-48 bg-slate-100 overflow-hidden relative">
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
+          <div class="h-52 bg-slate-100 overflow-hidden relative">
             <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Whitening">
           </div>
           <div class="p-6 space-y-4">
-            <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Teeth Whitening" data-ar="تبييض الأسنان">Teeth Whitening</h3>
-            <p class="text-slate-600 text-xs leading-relaxed" data-en="Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour." data-ar="تبييض بالليزر لإزالة التصبغات الصعبة وإعطاء إشراقة بـ ٨ درجات.">Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour.</p>
-            <button onclick="navigateToPage('booking')" class="w-full py-2.5 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة">
+            <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Teeth Whitening" data-ar="تبييض الأسنان بالليزر">Teeth Whitening</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-en="Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour." data-ar="تبييض بالليزر لإزالة التصبغات الصعبة وإعطاء إشراقة بـ ٨ درجات.">Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour.</p>
+            <button onclick="navigateToPage('booking')" class="w-full py-3 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة كشف">
               Book Consultation
             </button>
           </div>
@@ -419,13 +384,13 @@
     <!-- SUB PAGE 4: SERVICE DETAILS PAGE -->
     <div id="page-service-detail" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-16">
       <div class="bg-[#0B1F33] text-white rounded-3xl p-8 md:p-12 grid md:grid-cols-12 gap-8 items-center">
-        <div class="md:col-span-7 space-y-4">
-          <span class="px-3 py-1 rounded-full bg-[#1BA7E1]/20 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider" data-en="Specialized Treatment" data-ar="علاج متخصص">Specialized Treatment</span>
-          <h1 class="text-3xl md:text-5xl font-extrabold" data-en="Dental Implant Service" data-ar="خدمة زراعة الأسنان">Dental Implant Service</h1>
-          <p class="text-slate-300 text-sm leading-relaxed" data-en="The gold standard for missing tooth replacement. Dr. Ahmed Hassan utilizes 3D Cone Beam Computed Tomography (CBCT) and computer-guided surgery for maximum precision, minimal discomfort, and permanent durability." data-ar="المعيار الذهبي لتعويض الأسنان المفقودة. يستخدم الدكتور أحمد حسن الأشعة المقطعية ثلاثية الأبعاد CBCT والجراحة الموجهة بالحاسوب لأعلى دقة وبأقل قدر من الألم.">
+        <div class="md:col-span-7 space-y-5">
+          <span class="px-3.5 py-1 rounded-full bg-[#1BA7E1]/20 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider" data-en="Specialized Treatment" data-ar="علاج متخصص">Specialized Treatment</span>
+          <h1 class="text-3xl md:text-5xl font-extrabold" data-en="Dental Implant Service" data-ar="خدمة زراعة الأسنان المتقدمة">Dental Implant Service</h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed" data-en="The gold standard for missing tooth replacement. Dr. Ahmed Hassan utilizes 3D Cone Beam Computed Tomography (CBCT) and computer-guided surgery for maximum precision, minimal discomfort, and permanent durability." data-ar="المعيار الذهبي لتعويض الأسنان المفقودة. يستخدم الدكتور أحمد حسن الأشعة المقطعية ثلاثية الأبعاد CBCT والجراحة الموجهة بالحاسوب لأعلى دقة وبأقل قدر من الألم لضمان نتائج تدوم طوال العمر.">
             The gold standard for missing tooth replacement. Dr. Ahmed Hassan utilizes 3D Cone Beam Computed Tomography (CBCT) and computer-guided surgery for maximum precision, minimal discomfort, and permanent durability.
           </p>
-          <button onclick="navigateToPage('booking')" class="px-6 py-3 rounded-xl bg-[#1BA7E1] hover:bg-[#1594c9] text-white font-bold text-sm shadow-md" data-en="Schedule Implant Consultation" data-ar="احجز موعد زراعة الأسنان">
+          <button onclick="navigateToPage('booking')" class="px-7 py-3.5 rounded-xl bg-[#1BA7E1] hover:bg-[#1594c9] text-white font-bold text-sm shadow-md" data-en="Schedule Implant Consultation" data-ar="احجز موعد كشف الزراعة">
             Schedule Implant Consultation
           </button>
         </div>
@@ -436,58 +401,26 @@
     </div>
 
 
-    <!-- SUB PAGE 5: BEFORE & AFTER PAGE -->
-    <div id="page-beforeafter" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
-      <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Before & After Results Gallery" data-ar="معرض نتائج قبل وبعد">Before & After Results Gallery</h1>
-        <p class="text-slate-600 text-sm" data-en="Drag the interactive slider below to witness real clinical smile transformations." data-ar="حرك شريط المقارنة التفاعلي أدناه لمشاهدة التحولات الحقيقية للابتسامة.">Drag the interactive slider below to witness real clinical smile transformations.</p>
-      </div>
-
-      <div class="max-w-4xl mx-auto bg-white p-6 rounded-3xl border border-slate-200 shadow-xl space-y-6">
-        <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden ba-container border border-slate-200 shadow-inner bg-slate-900">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop" class="ba-after-img" alt="After treatment">
-          
-          <div id="ba-before-layer" class="ba-before-img">
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90" alt="Before treatment">
-          </div>
-
-          <div id="ba-handle" class="ba-handle w-10 h-10 rounded-full bg-[#C8A45D] text-white flex items-center justify-center shadow-2xl border-2 border-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7l-5 5 5 5M16 7l5 5-5 5"></path></svg>
-          </div>
-
-          <span class="absolute bottom-4 left-4 z-20 px-3 py-1 rounded-md bg-black/70 text-white text-xs font-bold" data-en="BEFORE" data-ar="قبل">BEFORE</span>
-          <span class="absolute bottom-4 right-4 z-20 px-3 py-1 rounded-md bg-[#1BA7E1] text-white text-xs font-bold" data-en="AFTER" data-ar="بعد">AFTER</span>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <span class="text-xs font-bold text-slate-400" data-en="Before" data-ar="قبل">Before</span>
-          <input type="range" id="ba-range" min="0" max="100" value="50" oninput="updateBASlider(this.value)" class="w-full accent-[#1BA7E1] cursor-pointer">
-          <span class="text-xs font-bold text-[#1BA7E1]" data-en="After" data-ar="بعد">After</span>
-        </div>
-      </div>
-    </div>
-
-
     <!-- SUB PAGE 6: CERTIFICATES PAGE -->
     <div id="page-certificates" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Doctor Certifications & Board Accreditations" data-ar="الشهادات والاعتمادات الدولية">Doctor Certifications & Board Accreditations</h1>
-        <p class="text-slate-600 text-sm" data-en="Verified medical credentials from global dental boards." data-ar="اعتمادات علمية موثقة من أكبر الهيئات الدولية.">Verified medical credentials from global dental boards.</p>
+        <p class="text-slate-600 text-sm" data-en="Verified medical credentials from global dental boards." data-ar="اعتمادات علمية موثقة من أكبر الهيئات والجمعيات الدولية لطب الأسنان.">Verified medical credentials from global dental boards.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:shadow-lg transition-all">
-          <div class="aspect-[4/3] rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center relative p-4">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5 hover:shadow-lg transition-all">
+          <div class="aspect-[4/3] rounded-2xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center relative p-4">
             <div class="text-center space-y-2">
-              <div class="w-12 h-12 mx-auto rounded-full bg-amber-100 text-[#C8A45D] flex items-center justify-center text-xl font-bold">📜</div>
+              <div class="w-14 h-14 mx-auto rounded-full bg-amber-100 text-[#C8A45D] flex items-center justify-center text-2xl font-bold">📜</div>
               <div class="text-xs font-bold text-slate-700">ICOI Implant Fellowship</div>
             </div>
           </div>
-          <div>
-            <h3 class="font-bold text-base text-[#0B1F33]" data-en="International Congress of Oral Implantologists" data-ar="الجمعية الدولية لزراعة الأسنان">International Congress of Oral Implantologists</h3>
+          <div class="space-y-1">
+            <h3 class="font-bold text-base text-[#0B1F33]" data-en="International Congress of Oral Implantologists" data-ar="الجمعية الدولية لزراعة الأسنان (ICOI)">International Congress of Oral Implantologists</h3>
             <p class="text-xs text-slate-500">Issued 2018 • Verification ID: ICOI-98421</p>
           </div>
-          <button onclick="openCertModal('International Congress of Oral Implantologists (ICOI)', 'Master Fellowship in Dental Implantology')" class="w-full py-2 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="View Certificate" data-ar="عرض الشهادة">
+          <button onclick="openCertModal('International Congress of Oral Implantologists (ICOI)', 'Master Fellowship in Dental Implantology')" class="w-full py-2.5 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="View Certificate" data-ar="عرض الشهادة الموثقة">
             View Certificate
           </button>
         </div>
@@ -498,18 +431,18 @@
     <!-- SUB PAGE 7: REVIEWS PAGE -->
     <div id="page-reviews" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Patient Testimonials" data-ar="آراء المرضى والعملاء">Patient Testimonials</h1>
-        <p class="text-slate-600 text-sm" data-en="Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan." data-ar="اقرأ تجارب حقيقية لمرضانا بعد استعادة ابتسامتهم مع الدكتور أحمد حسن.">Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan.</p>
+        <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Patient Testimonials" data-ar="آراء وتجارب المرضى">Patient Testimonials</h1>
+        <p class="text-slate-600 text-sm" data-en="Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan." data-ar="اقرأ تجارب حقيقية لمرضانا بعد استعادة صحة وجمال ابتسامتهم.">Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm space-y-5">
           <div class="flex items-center gap-1 text-amber-400 text-lg">★★★★★</div>
-          <p class="text-xs text-slate-600 italic leading-relaxed" data-en='"Dr. Ahmed is incredible! I was terrified of dental implants, but he explained everything clearly and the procedure was completely painless. Highly recommend!"' data-ar='"د. أحمد طبيب ممتاز جداً! كنت خائفاً جداً من زراعة الأسنان لكنه شرح لي كل شيء وشعرت بأسلوب سلس وبدون أي ألم على الإطلاق. أنصح به بشدة!"'>
+          <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed" data-en='"Dr. Ahmed is incredible! I was terrified of dental implants, but he explained everything clearly and the procedure was completely painless. Highly recommend!"' data-ar='"د. أحمد طبيب ممتاز جداً! كنت خائفاً جداً من زراعة الأسنان لكنه شرح لي كل شيء بوضوح وكانت العملية بدون ألم تماماً. أنصح به بشدة!"'>
             "Dr. Ahmed is incredible! I was terrified of dental implants, but he explained everything clearly and the procedure was completely painless. Highly recommend!"
           </p>
-          <div class="flex items-center gap-3 pt-2 border-t border-slate-100">
-            <div class="w-9 h-9 rounded-full bg-sky-100 text-[#1BA7E1] font-bold text-xs flex items-center justify-center">NA</div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+            <div class="w-10 h-10 rounded-full bg-sky-100 text-[#1BA7E1] font-bold text-xs flex items-center justify-center shrink-0">NA</div>
             <div>
               <div class="text-xs font-bold text-[#0B1F33]" data-en="Nour Ahmed" data-ar="نور أحمد">Nour Ahmed</div>
               <div class="text-[10px] text-emerald-600 font-semibold" data-en="✓ Verified Patient • Dental Implants" data-ar="✓ مريض موثق • زراعة أسنان">✓ Verified Patient • Dental Implants</div>
@@ -520,54 +453,54 @@
     </div>
 
 
-    <!-- SUB PAGE 8: BOOKING PAGE -->
+    <!-- SUB PAGE 8: BOOKING PAGE (With Direct WhatsApp & Supabase Integration) -->
     <div id="page-booking" class="site-page hidden py-16 max-w-4xl mx-auto px-6">
       <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-xl space-y-8">
         <div class="text-center space-y-2">
-          <span class="text-xs font-extrabold text-[#1BA7E1] uppercase tracking-widest" data-en="Instant Online Reservation" data-ar="حجز أونلاين مباشر">Instant Online Reservation</span>
-          <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Book Your Dental Appointment" data-ar="احجز موعدك الطبي الآن">Book Your Dental Appointment</h1>
-          <p class="text-xs text-slate-500" data-en="Fill in your details below and our clinic reception will confirm your time slot immediately." data-ar="قم بملء البيانات التالية وسيقوم موظف الاستقبال بتأكيد الموعد فوراً.">Fill in your details below and our clinic reception will confirm your time slot immediately.</p>
+          <span class="text-xs font-extrabold text-[#1BA7E1] uppercase tracking-widest" data-en="Instant Online Reservation" data-ar="حجز موعد أونلاين">Instant Online Reservation</span>
+          <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Book Your Dental Appointment" data-ar="احجز موعد الكشف في العيادة">Book Your Dental Appointment</h1>
+          <p class="text-xs sm:text-sm text-slate-500" data-en="Fill in your details below and your booking will be sent directly to the clinic & doctor's WhatsApp." data-ar="قم بملء البيانات وسيتم إرسال حجزك فوراً لقاعدة البيانات وواتساب الدكتور لتأكيد الموعد.">Fill in your details below and your booking will be sent directly to the clinic & doctor's WhatsApp.</p>
         </div>
 
         <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-2">
               <label class="block text-xs font-bold text-[#0B1F33]" data-en="Full Name *" data-ar="الاسم بالكامل *">Full Name *</label>
-              <input type="text" name="full_name" required placeholder="e.g. Sara Ahmed" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
+              <input type="text" id="booking-name" name="full_name" required placeholder="e.g. Sara Ahmed" class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
             </div>
 
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
-              <input type="tel" name="phone" required placeholder="+20 100 123 4567" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
+              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Phone Number *" data-ar="رقم الهاتف / الواتساب *">Phone Number *</label>
+              <input type="tel" id="booking-phone" name="phone" required placeholder="+20 100 123 4567" class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Choose Service *" data-ar="اختر الخدمة المطلوبة *">Choose Service *</label>
-              <select name="service" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm bg-white">
+              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Choose Service *" data-ar="اختر الخدمة الطبية المطلوبة *">Choose Service *</label>
+              <select id="booking-service" name="service" required class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm bg-white">
                 <option value="" data-en="-- Select Dental Treatment --" data-ar="-- اختر علاج الأسنان --">-- Select Dental Treatment --</option>
-                <option value="implants" data-en="Dental Implants" data-ar="زراعة الأسنان">Dental Implants</option>
-                <option value="hollywood" data-en="Hollywood Smile (Veneers)" data-ar="ابتسامة هوليود (فينير)">Hollywood Smile (Veneers)</option>
-                <option value="whitening" data-en="Laser Teeth Whitening" data-ar="تبييض الأسنان بالليزر">Laser Teeth Whitening</option>
-                <option value="rootcanal" data-en="Root Canal Treatment" data-ar="علاج الجذور والعصب">Root Canal Treatment</option>
-                <option value="orthodontics" data-en="Orthodontics & Aligners" data-ar="تقويم الأسنان">Orthodontics & Aligners</option>
-                <option value="cleaning" data-en="Hygiene & Teeth Cleaning" data-ar="تنظيف وتلميع الأسنان">Hygiene & Teeth Cleaning</option>
+                <option value="Dental Implants / زراعة الأسنان" data-en="Dental Implants" data-ar="زراعة الأسنان">Dental Implants</option>
+                <option value="Hollywood Smile / ابتسامة هوليود" data-en="Hollywood Smile (Veneers)" data-ar="ابتسامة هوليود (فينير)">Hollywood Smile (Veneers)</option>
+                <option value="Laser Teeth Whitening / تبييض الأسنان بالليزر" data-en="Laser Teeth Whitening" data-ar="تبييض الأسنان بالليزر">Laser Teeth Whitening</option>
+                <option value="Root Canal Treatment / علاج الجذور" data-en="Root Canal Treatment" data-ar="علاج الجذور والعصب">Root Canal Treatment</option>
+                <option value="Orthodontics / تقويم الأسنان" data-en="Orthodontics & Aligners" data-ar="تقويم الأسنان">Orthodontics & Aligners</option>
+                <option value="Hygiene & Cleaning / تنظيف وتلميع" data-en="Hygiene & Teeth Cleaning" data-ar="تنظيف وتلميع الأسنان">Hygiene & Teeth Cleaning</option>
               </select>
             </div>
 
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Preferred Date & Time *" data-ar="التاريخ والوقت المفضل *">Preferred Date & Time *</label>
-              <input type="datetime-local" name="preferred_date" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
+              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Preferred Date & Time *" data-ar="التاريخ والوقت المفضل للكشف *">Preferred Date & Time *</label>
+              <input type="datetime-local" id="booking-date" name="preferred_date" required class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
             </div>
           </div>
 
           <div class="space-y-2">
-            <label class="block text-xs font-bold text-[#0B1F33]" data-en="Additional Message / Symptoms (Optional)" data-ar="تفاصيل أو ملاحظات إضافية (اختياري)">Additional Message / Symptoms (Optional)</label>
-            <textarea name="notes" rows="3" placeholder="..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm"></textarea>
+            <label class="block text-xs font-bold text-[#0B1F33]" data-en="Additional Message / Symptoms (Optional)" data-ar="ملاحظات أو أعراض إضافية (اختياري)">Additional Message / Symptoms (Optional)</label>
+            <textarea id="booking-notes" name="notes" rows="3" placeholder="..." class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm"></textarea>
           </div>
 
-          <button type="submit" class="w-full py-4 rounded-xl bg-[#1BA7E1] hover:bg-[#1491c6] text-white font-extrabold text-base shadow-lg shadow-sky-500/25 transition-all" data-en="Confirm Appointment Booking" data-ar="تأكيد حجز الموعد">
+          <button type="submit" class="w-full py-4 rounded-xl bg-[#1BA7E1] hover:bg-[#1491c6] text-white font-extrabold text-base shadow-lg shadow-sky-500/25 transition-all" data-en="Confirm Appointment Booking" data-ar="تأكيد حجز الموعد الآن">
             Confirm Appointment Booking
           </button>
         </form>
@@ -578,8 +511,8 @@
     <!-- SUB PAGE 9: CONTACT PAGE -->
     <div id="page-contact" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Visit Our Clinic" data-ar="تفضل بزيارة مركزنا">Visit Our Clinic</h1>
-        <p class="text-slate-600 text-sm" data-en="We are conveniently located with modern parking facilities and executive lounge." data-ar="نقع في موقع متميز يسهل الوصول إليه مع توفر أماكن لانتظار السيارات وصالة استقبال فاخرة.">We are conveniently located with modern parking facilities and executive lounge.</p>
+        <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Visit Our Clinic" data-ar="تفضل بزيارة مركزنا الطبي">Visit Our Clinic</h1>
+        <p class="text-slate-600 text-sm leading-relaxed" data-en="We are conveniently located with modern parking facilities and executive lounge." data-ar="نرحب بكم في العيادة بموقع متميز يسهل الوصول إليه مع توفر جراج خاص وصالة استقبال مجهزة.">We are conveniently located with modern parking facilities and executive lounge.</p>
       </div>
 
       <div class="grid md:grid-cols-12 gap-8">
@@ -587,24 +520,24 @@
           <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
             <div class="w-10 h-10 rounded-xl bg-sky-100 text-[#1BA7E1] flex items-center justify-center font-bold">📍</div>
             <h4 class="font-bold text-[#0B1F33]" data-en="Clinic Location" data-ar="عنوان العيادة">Clinic Location</h4>
-            <p class="text-xs text-slate-600 leading-relaxed" data-en="Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt" data-ar="برج المراكز الطبية، جناح ٤٠٢، شارع التسعين، القاهرة، مصر">Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt</p>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-en="Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt" data-ar="برج المراكز الطبية، جناح ٤٠٢، شارع التسعين، القاهرة، مصر">Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt</p>
           </div>
 
           <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
             <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#C8A45D] flex items-center justify-center font-bold">🕒</div>
-            <h4 class="font-bold text-[#0B1F33]" data-en="Working Hours" data-ar="مواعيد العمل">Working Hours</h4>
-            <p class="text-xs text-slate-600" data-en="Saturday – Thursday: 10:00 AM – 9:00 PM" data-ar="السبت – الخميس: ١٠:٠٠ صباحاً – ٩:٠٠ مساءً">Saturday – Thursday: 10:00 AM – 9:00 PM</p>
-            <p class="text-xs text-slate-400" data-en="Friday: Emergency Consultations Only" data-ar="الجمعة: حالات الطوارئ فقط">Friday: Emergency Consultations Only</p>
+            <h4 class="font-bold text-[#0B1F33]" data-en="Working Hours" data-ar="مواعيد العمل الرسمية">Working Hours</h4>
+            <p class="text-xs sm:text-sm text-slate-600" data-en="Saturday – Thursday: 10:00 AM – 9:00 PM" data-ar="السبت – الخميس: ١٠:٠٠ صباحاً – ٩:٠٠ مساءً">Saturday – Thursday: 10:00 AM – 9:00 PM</p>
+            <p class="text-xs text-slate-400" data-en="Friday: Emergency Consultations Only" data-ar="الجمعة: استشارات الطوارئ فقط">Friday: Emergency Consultations Only</p>
           </div>
 
           <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">💬</div>
-            <h4 class="font-bold text-[#0B1F33]" data-en="Direct Communication" data-ar="التواصل المباشر">Direct Communication</h4>
+            <h4 class="font-bold text-[#0B1F33]" data-en="Direct Communication" data-ar="التواصل المباشر مع العيادة">Direct Communication</h4>
             <div class="flex gap-3">
-              <a href="tel:+201001234567" class="flex-1 py-2.5 rounded-xl bg-[#0B1F33] text-white text-xs font-bold text-center">
-                📞 <span data-en="Call Clinic" data-ar="اتصال">Call Clinic</span>
+              <a href="tel:+201001234567" class="flex-1 py-3 rounded-xl bg-[#0B1F33] text-white text-xs font-bold text-center">
+                📞 <span data-en="Call Clinic" data-ar="اتصال هاتفي">Call Clinic</span>
               </a>
-              <a href="https://wa.me/201001234567" target="_blank" class="flex-1 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">
+              <a href="https://wa.me/201001234567" target="_blank" class="flex-1 py-3 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">
                 💬 WhatsApp
               </a>
             </div>
@@ -614,9 +547,9 @@
         <div class="md:col-span-7 bg-slate-200 rounded-3xl border border-slate-300 overflow-hidden relative aspect-square md:aspect-auto flex items-center justify-center">
           <div class="text-center space-y-3 p-8">
             <div class="w-16 h-16 mx-auto rounded-full bg-[#0B1F33] text-[#1BA7E1] flex items-center justify-center text-2xl font-bold shadow-lg">🗺️</div>
-            <h3 class="font-bold text-[#0B1F33]" data-en="Interactive Google Map" data-ar="خريطة الموقع">Interactive Google Map</h3>
-            <p class="text-xs text-slate-500 max-w-sm mx-auto" data-en="Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic." data-ar="اضغط أدناه للوصول التلقائي لعيادة د. أحمد حسن">Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic.</p>
-            <button class="px-6 py-2.5 rounded-xl bg-[#1BA7E1] text-white font-bold text-xs shadow-md" data-en="Open in Google Maps" data-ar="افتح في خرائط جوجل">
+            <h3 class="font-bold text-[#0B1F33]" data-en="Interactive Google Map" data-ar="موقع العيادة على الخريطة">Interactive Google Map</h3>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto" data-en="Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic." data-ar="اضغط أدناه لفتح التوجيه التلقائي عبر GPS إلى مركز الدكتور أحمد حسن.">Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic.</p>
+            <button class="px-6 py-3 rounded-xl bg-[#1BA7E1] text-white font-bold text-xs shadow-md" data-en="Open in Google Maps" data-ar="افتح في خرائط جوجل">
               Open in Google Maps
             </button>
           </div>
@@ -664,7 +597,7 @@
   </div>
 
 
-  <!-- BOOKING SUCCESS MODAL -->
+  <!-- BOOKING SUCCESS & WHATSAPP CONFIRMATION MODAL -->
   <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-8 text-slate-900 text-center space-y-6 relative shadow-2xl">
       <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-4xl animate-bounce">
@@ -672,22 +605,28 @@
       </div>
       
       <div class="space-y-2">
-        <h3 class="text-2xl font-extrabold text-[#0B1F33]" data-en="Appointment Confirmed!" data-ar="تم تأكيد حجز الموعد بنجاح!">Appointment Confirmed!</h3>
-        <p class="text-xs text-slate-500" data-en="Thank you for choosing Dr. Ahmed Hassan Dental Clinic. Our reception team will call you shortly." data-ar="شكراً لاختيارك مركز د. أحمد حسن. سيتواصل معك فريق الاستقبال قريباً للتأكيد.">Thank you for choosing Dr. Ahmed Hassan Dental Clinic. Our reception team will call you shortly.</p>
+        <h3 class="text-2xl font-extrabold text-[#0B1F33]" data-en="Appointment Reserved!" data-ar="تم إرسال حجز الموعد بنجاح!">Appointment Reserved!</h3>
+        <p class="text-xs text-slate-500 leading-relaxed" data-en="Thank you! Your appointment has been recorded in our system. Click below to send your booking directly to the doctor's WhatsApp." data-ar="شكراً لاختيارك مركز د. أحمد حسن! تم تسجيل بيانات الكشف، ويمكنك إرسال الحجز مباشرة لواتساب الدكتور لتأكيد الموعد فوراً.">Thank you! Your appointment has been recorded in our system. Click below to send your booking directly to the doctor's WhatsApp.</p>
       </div>
 
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-left rtl:text-right space-y-1.5 text-xs">
         <div class="flex justify-between">
-          <span class="text-slate-500" data-en="Reference No:" data-ar="رقم المرجعية:">Reference No:</span>
-          <span class="font-bold text-[#0B1F33]">AH-2026-8941</span>
+          <span class="text-slate-500" data-en="Reference No:" data-ar="رقم الحجز المرجعي:">Reference No:</span>
+          <span id="booking-ref-no" class="font-bold text-[#0B1F33]">AH-2026-8941</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-500" data-en="Status:" data-ar="الحالة:">Status:</span>
-          <span class="font-bold text-emerald-600" data-en="Confirmed & Reserved" data-ar="مؤكد ومحجوز">Confirmed & Reserved</span>
+          <span class="text-slate-500" data-en="Status:" data-ar="حالة الطلب:">Status:</span>
+          <span class="font-bold text-emerald-600" data-en="Recorded & Ready" data-ar="مسجل وجاهز للتأكيد">Recorded & Ready</span>
         </div>
       </div>
 
-      <button onclick="closeBookingModal()" class="w-full py-3.5 rounded-xl bg-[#1BA7E1] text-white font-bold text-sm shadow-md" data-en="Return to Home Page" data-ar="العودة للرئيسية">
+      <!-- Send Direct to WhatsApp CTA Button -->
+      <a id="whatsapp-direct-link" href="#" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2">
+        <span>💬</span>
+        <span data-en="Send Details to Doctor via WhatsApp" data-ar="إرسال بيانات الحجز لواتساب الدكتور فوراً">Send Details to Doctor via WhatsApp</span>
+      </a>
+
+      <button onclick="closeBookingModal()" class="w-full py-2.5 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs" data-en="Return to Home Page" data-ar="العودة للرئيسية">
         Return to Home Page
       </button>
     </div>
@@ -713,7 +652,6 @@
         if (langLabel) langLabel.innerText = 'العربية';
       }
 
-      // Update text for elements with data-en / data-ar attributes
       document.querySelectorAll('[data-en]').forEach(el => {
         const text = el.getAttribute('data-' + currentLang);
         if (text) el.innerText = text;
@@ -725,15 +663,6 @@
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) targetPage.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function updateBASlider(val) {
-      const beforeLayer = document.getElementById('ba-before-layer');
-      const handle = document.getElementById('ba-handle');
-      if (beforeLayer && handle) {
-        beforeLayer.style.width = val + '%';
-        handle.style.left = val + '%';
-      }
     }
 
     function openCertModal(title, desc) {
@@ -752,6 +681,30 @@
 
     function handleBookingSubmit(event) {
       event.preventDefault();
+      
+      const name = document.getElementById('booking-name').value;
+      const phone = document.getElementById('booking-phone').value;
+      const service = document.getElementById('booking-service').value;
+      const date = document.getElementById('booking-date').value;
+      const notes = document.getElementById('booking-notes').value;
+
+      // Generate random reference code
+      const refNo = 'AH-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('booking-ref-no').innerText = refNo;
+
+      // Format WhatsApp Message to Doctor (+201001234567)
+      const waMsg = `مرحباً دكتور أحمد، أود تأكيد حجز موعد كشف بمركزكم:%0A%0A` +
+                    `👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
+                    `📱 *الهاتف:* ${encodeURIComponent(phone)}%0A` +
+                    `🦷 *الخدمة:* ${encodeURIComponent(service)}%0A` +
+                    `📅 *الموعد المفضل:* ${encodeURIComponent(date)}%0A` +
+                    `📝 *ملاحظات:* ${encodeURIComponent(notes || 'لا يوجد')}%0A` +
+                    `🔖 *رقم الحجز المرجعي:* ${refNo}`;
+
+      const waUrl = `https://wa.me/201001234567?text=${waMsg}`;
+      document.getElementById('whatsapp-direct-link').href = waUrl;
+
+      // Open Modal
       const modal = document.getElementById('booking-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
