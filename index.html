@@ -106,7 +106,7 @@
         <button onclick="navigateToPage('contact')" class="hover:text-[#1BA7E1] transition-colors py-2" data-en="Contact" data-ar="اتصل بنا">Contact</button>
       </nav>
 
-      <!-- Header Action Buttons (Language Switcher + Booking CTA) -->
+      <!-- Header Action Buttons -->
       <div class="flex items-center gap-3">
         <!-- Language Switcher Button -->
         <button onclick="toggleLanguage()" id="lang-toggle-btn" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0B1F33] font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 shadow-sm">
@@ -195,37 +195,42 @@
             </div>
           </div>
 
-          <!-- Doctor Portrait Graphic -->
-          <div class="lg:col-span-5 relative">
+          <!-- Clean Doctor Portrait Container (Fixed Overlap Issue) -->
+          <div class="lg:col-span-5 space-y-4">
             <div class="relative w-full max-w-md mx-auto aspect-[4/5] rounded-3xl bg-gradient-to-br from-[#0B1F33] to-[#153454] p-3 shadow-2xl overflow-hidden border-4 border-white">
               <div class="w-full h-full rounded-2xl bg-slate-800 flex flex-col justify-between p-6 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop');">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F33]/90 via-transparent to-black/20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F33]/95 via-transparent to-black/30"></div>
 
+                <!-- Top Badge -->
                 <div class="relative z-10 flex justify-end">
                   <span class="px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#0B1F33] text-xs font-bold shadow-md" data-en="⭐ 4.9/5 Patient Rating" data-ar="⭐ ٤.٩/٥ تقييم المرضى">
                     ⭐ 4.9/5 Patient Rating
                   </span>
                 </div>
 
-                <div class="relative z-10 text-white space-y-1.5">
+                <!-- Bottom Doctor Info -->
+                <div class="relative z-10 text-white space-y-2 pb-2">
                   <h3 class="text-2xl font-bold" data-en="Dr. Ahmed Hassan" data-ar="د. أحمد حسن">Dr. Ahmed Hassan</h3>
                   <p class="text-xs sm:text-sm text-sky-200 font-medium" data-en="Cosmetic Dentistry & Implant Specialist" data-ar="أخصائي تجميل وزراعة الأسنان">Cosmetic Dentistry & Implant Specialist</p>
-                  <div class="pt-2 flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                    <span class="text-xs text-emerald-200 font-semibold" data-en="Available for Consultations" data-ar="متاح للحجز والاستشارات">Available for Consultations</span>
+                  
+                  <div class="pt-1 flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs text-emerald-300 font-semibold" data-en="Available for Consultations" data-ar="متاح الآن للحجز والاستشارات">Available for Consultations</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="absolute -bottom-6 -left-6 rtl:-right-6 rtl:left-auto bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3.5 max-w-xs">
-              <div class="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-xl shrink-0">🏆</div>
-              <div>
-                <div class="text-xs font-bold text-slate-800" data-en="ICOI & AACD Certified" data-ar="زمالة الجمعية الدولية والأمريكية">ICOI & AACD Certified</div>
-                <div class="text-[11px] text-slate-500" data-en="Global Implant Board Member" data-ar="عضو المجلس الدولي لزراعة الأسنان">Global Implant Board Member</div>
+            <!-- Standalone Clean Accreditation Card (No Overlap) -->
+            <div class="max-w-md mx-auto bg-white p-4 rounded-2xl shadow-md border border-slate-200 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-2xl shrink-0">🏆</div>
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-slate-800" data-en="ICOI & AACD Certified Fellow" data-ar="زمالة الجمعية الدولية والأمريكية لزراعة الأسنان">ICOI & AACD Certified Fellow</div>
+                <div class="text-[11px] text-slate-500" data-en="Global Implant Board Member" data-ar="عضو المجلس الدولي لزراعة الأسنان وتجميل الفك">Global Implant Board Member</div>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -335,7 +340,6 @@
     <div id="page-services" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Our Dental Treatments" data-ar="خدماتنا وعلاجات الأسنان">Our Dental Treatments</h1>
-        <p class="text-slate-600 text-sm leading-relaxed" data-en="Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth." data-ar="اكتشف الحلول الطبية المتخصصة لاستعادة صحة وجمال أسنانك بأعلى معايير الجودة والتكنولوجيا.">Discover specialized clinical solutions tailored to restore health, functionality, and beauty to your teeth.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -351,32 +355,6 @@
             </button>
           </div>
         </div>
-
-        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-          <div class="h-52 bg-slate-100 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Veneers">
-          </div>
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Hollywood Smile" data-ar="ابتسامة هوليود">Hollywood Smile</h3>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-en="Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation." data-ar="عدسات فينير إيماكس لتغيير كامل مظهر الابتسامة بشكل تناسقي جذاب.">Ultra-thin porcelain veneers tailored to give you a flawless, harmonious smile transformation.</p>
-            <button onclick="navigateToPage('booking')" class="w-full py-3 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة كشف">
-              Book Consultation
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-          <div class="h-52 bg-slate-100 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Whitening">
-          </div>
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl font-bold text-[#0B1F33]" data-en="Teeth Whitening" data-ar="تبييض الأسنان بالليزر">Teeth Whitening</h3>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-en="Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour." data-ar="تبييض بالليزر لإزالة التصبغات الصعبة وإعطاء إشراقة بـ ٨ درجات.">Professional laser whitening that safely lifts stubborn stains up to 8 shades in under 1 hour.</p>
-            <button onclick="navigateToPage('booking')" class="w-full py-3 rounded-xl bg-[#0B1F33] text-white font-bold text-xs hover:bg-[#1BA7E1] transition-colors" data-en="Book Consultation" data-ar="احجز استشارة كشف">
-              Book Consultation
-            </button>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -387,9 +365,6 @@
         <div class="md:col-span-7 space-y-5">
           <span class="px-3.5 py-1 rounded-full bg-[#1BA7E1]/20 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider" data-en="Specialized Treatment" data-ar="علاج متخصص">Specialized Treatment</span>
           <h1 class="text-3xl md:text-5xl font-extrabold" data-en="Dental Implant Service" data-ar="خدمة زراعة الأسنان المتقدمة">Dental Implant Service</h1>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed" data-en="The gold standard for missing tooth replacement. Dr. Ahmed Hassan utilizes 3D Cone Beam Computed Tomography (CBCT) and computer-guided surgery for maximum precision, minimal discomfort, and permanent durability." data-ar="المعيار الذهبي لتعويض الأسنان المفقودة. يستخدم الدكتور أحمد حسن الأشعة المقطعية ثلاثية الأبعاد CBCT والجراحة الموجهة بالحاسوب لأعلى دقة وبأقل قدر من الألم لضمان نتائج تدوم طوال العمر.">
-            The gold standard for missing tooth replacement. Dr. Ahmed Hassan utilizes 3D Cone Beam Computed Tomography (CBCT) and computer-guided surgery for maximum precision, minimal discomfort, and permanent durability.
-          </p>
           <button onclick="navigateToPage('booking')" class="px-7 py-3.5 rounded-xl bg-[#1BA7E1] hover:bg-[#1594c9] text-white font-bold text-sm shadow-md" data-en="Schedule Implant Consultation" data-ar="احجز موعد كشف الزراعة">
             Schedule Implant Consultation
           </button>
@@ -405,7 +380,6 @@
     <div id="page-certificates" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Doctor Certifications & Board Accreditations" data-ar="الشهادات والاعتمادات الدولية">Doctor Certifications & Board Accreditations</h1>
-        <p class="text-slate-600 text-sm" data-en="Verified medical credentials from global dental boards." data-ar="اعتمادات علمية موثقة من أكبر الهيئات والجمعيات الدولية لطب الأسنان.">Verified medical credentials from global dental boards.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -432,7 +406,6 @@
     <div id="page-reviews" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Patient Testimonials" data-ar="آراء وتجارب المرضى">Patient Testimonials</h1>
-        <p class="text-slate-600 text-sm" data-en="Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan." data-ar="اقرأ تجارب حقيقية لمرضانا بعد استعادة صحة وجمال ابتسامتهم.">Read real feedback from patients who restored their smiles with Dr. Ahmed Hassan.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
@@ -441,28 +414,78 @@
           <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed" data-en='"Dr. Ahmed is incredible! I was terrified of dental implants, but he explained everything clearly and the procedure was completely painless. Highly recommend!"' data-ar='"د. أحمد طبيب ممتاز جداً! كنت خائفاً جداً من زراعة الأسنان لكنه شرح لي كل شيء بوضوح وكانت العملية بدون ألم تماماً. أنصح به بشدة!"'>
             "Dr. Ahmed is incredible! I was terrified of dental implants, but he explained everything clearly and the procedure was completely painless. Highly recommend!"
           </p>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
-            <div class="w-10 h-10 rounded-full bg-sky-100 text-[#1BA7E1] font-bold text-xs flex items-center justify-center shrink-0">NA</div>
-            <div>
-              <div class="text-xs font-bold text-[#0B1F33]" data-en="Nour Ahmed" data-ar="نور أحمد">Nour Ahmed</div>
-              <div class="text-[10px] text-emerald-600 font-semibold" data-en="✓ Verified Patient • Dental Implants" data-ar="✓ مريض موثق • زراعة أسنان">✓ Verified Patient • Dental Implants</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
 
 
-    <!-- SUB PAGE 8: BOOKING PAGE (With Direct WhatsApp & Supabase Integration) -->
-    <div id="page-booking" class="site-page hidden py-16 max-w-4xl mx-auto px-6">
+    <!-- SUB PAGE 8: ADVANCED INTERACTIVE BOOKING PAGE WITH WEEKLY CALENDAR SCHEDULE -->
+    <div id="page-booking" class="site-page hidden py-16 max-w-5xl mx-auto px-6 space-y-10">
       <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-xl space-y-8">
-        <div class="text-center space-y-2">
-          <span class="text-xs font-extrabold text-[#1BA7E1] uppercase tracking-widest" data-en="Instant Online Reservation" data-ar="حجز موعد أونلاين">Instant Online Reservation</span>
-          <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Book Your Dental Appointment" data-ar="احجز موعد الكشف في العيادة">Book Your Dental Appointment</h1>
-          <p class="text-xs sm:text-sm text-slate-500" data-en="Fill in your details below and your booking will be sent directly to the clinic & doctor's WhatsApp." data-ar="قم بملء البيانات وسيتم إرسال حجزك فوراً لقاعدة البيانات وواتساب الدكتور لتأكيد الموعد.">Fill in your details below and your booking will be sent directly to the clinic & doctor's WhatsApp.</p>
+        
+        <div class="text-center space-y-3">
+          <span class="px-4 py-1.5 rounded-full bg-sky-100 text-[#1BA7E1] text-xs font-bold uppercase tracking-wider" data-en="Live Appointment Scheduler" data-ar="جدول الحجز الفوري التفاعلي">Live Appointment Scheduler</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0B1F33]" data-en="Select Your Preferred Date & Time" data-ar="اختر اليوم والموعد المناسب لك للكشف">Select Your Preferred Date & Time</h1>
+          <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed" data-en="Choose an available time slot from the live weekly schedule below. Locked slots represent appointments already booked by other patients." data-ar="اختر موعداً متاحاً من الجدول الأسبوعي أدناه. المواعيد المقفلة تعبر عن حجز مسبق لمرضى آخرين لا يمكن تكراره.">Choose an available time slot from the live weekly schedule below. Locked slots represent appointments already booked by other patients.</p>
         </div>
 
-        <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
+        <!-- 📅 WEEKLY CALENDAR SCHEDULE PICKER -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📅</span>
+              <h3 class="font-bold text-sm text-[#0B1F33]" data-en="Weekly Schedule" data-ar="جدول مواعيد عيادة الأسبوع الحقيقي">Weekly Schedule</h3>
+            </div>
+
+            <!-- Week Navigator -->
+            <div class="flex items-center gap-2">
+              <button onclick="shiftWeek(-1)" class="px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100">
+                <span data-en="← Prev Week" data-ar="← الأسبوع السابق">← Prev Week</span>
+              </button>
+              <span id="current-week-label" class="text-xs font-extrabold text-[#0B1F33] px-2">Week of Sep 07 - Sep 13</span>
+              <button onclick="shiftWeek(1)" class="px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100">
+                <span data-en="Next Week →" data-ar="الأسبوع القادم →">Next Week →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Schedule Legend -->
+          <div class="flex flex-wrap items-center gap-6 text-xs font-bold text-slate-600">
+            <div class="flex items-center gap-2">
+              <span class="w-3.5 h-3.5 rounded-md bg-white border-2 border-emerald-500"></span>
+              <span data-en="Available Slot" data-ar="موعد متاح للحجز">Available Slot</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3.5 h-3.5 rounded-md bg-[#1BA7E1]"></span>
+              <span data-en="Your Selected Slot" data-ar="الموعد المختار لك">Your Selected Slot</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3.5 h-3.5 rounded-md bg-slate-300"></span>
+              <span data-en="Booked by Another Patient" data-ar="محجوز لمريض آخر 🔒">Booked by Another Patient</span>
+            </div>
+          </div>
+
+          <!-- Days Grid Selector -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3" id="calendar-days-container">
+            <!-- Dynamically populated by JS -->
+          </div>
+
+          <!-- Time Slots Container for Selected Day -->
+          <div class="pt-4 border-t border-slate-200 space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-[#0B1F33]" id="slots-header-title">Available Hours for Saturday:</span>
+              <span class="text-[11px] text-[#1BA7E1] font-semibold" id="selected-slot-summary">No slot selected yet</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2.5" id="calendar-slots-container">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+        </div>
+
+
+        <!-- BOOKING FORM -->
+        <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6 pt-4 border-t border-slate-100">
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-2">
               <label class="block text-xs font-bold text-[#0B1F33]" data-en="Full Name *" data-ar="الاسم بالكامل *">Full Name *</label>
@@ -490,8 +513,8 @@
             </div>
 
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Preferred Date & Time *" data-ar="التاريخ والوقت المفضل للكشف *">Preferred Date & Time *</label>
-              <input type="datetime-local" id="booking-date" name="preferred_date" required class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-[#1BA7E1] focus:ring-2 focus:ring-sky-100 outline-none text-sm">
+              <label class="block text-xs font-bold text-[#0B1F33]" data-en="Selected Appointment Date & Time *" data-ar="الموعد واليوم المختار للكشف *">Selected Appointment Date & Time *</label>
+              <input type="text" id="booking-date-text" readonly required placeholder="Click a slot from calendar above..." class="w-full px-4 py-3.5 rounded-xl border border-slate-300 bg-slate-100 text-slate-700 outline-none text-sm font-semibold">
             </div>
           </div>
 
@@ -512,7 +535,6 @@
     <div id="page-contact" class="site-page hidden py-16 max-w-7xl mx-auto px-6 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <h1 class="text-3xl font-extrabold text-[#0B1F33]" data-en="Visit Our Clinic" data-ar="تفضل بزيارة مركزنا الطبي">Visit Our Clinic</h1>
-        <p class="text-slate-600 text-sm leading-relaxed" data-en="We are conveniently located with modern parking facilities and executive lounge." data-ar="نرحب بكم في العيادة بموقع متميز يسهل الوصول إليه مع توفر جراج خاص وصالة استقبال مجهزة.">We are conveniently located with modern parking facilities and executive lounge.</p>
       </div>
 
       <div class="grid md:grid-cols-12 gap-8">
@@ -521,37 +543,6 @@
             <div class="w-10 h-10 rounded-xl bg-sky-100 text-[#1BA7E1] flex items-center justify-center font-bold">📍</div>
             <h4 class="font-bold text-[#0B1F33]" data-en="Clinic Location" data-ar="عنوان العيادة">Clinic Location</h4>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-en="Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt" data-ar="برج المراكز الطبية، جناح ٤٠٢، شارع التسعين، القاهرة، مصر">Medical Center Building, Suite 402, Main Avenue, Cairo, Egypt</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#C8A45D] flex items-center justify-center font-bold">🕒</div>
-            <h4 class="font-bold text-[#0B1F33]" data-en="Working Hours" data-ar="مواعيد العمل الرسمية">Working Hours</h4>
-            <p class="text-xs sm:text-sm text-slate-600" data-en="Saturday – Thursday: 10:00 AM – 9:00 PM" data-ar="السبت – الخميس: ١٠:٠٠ صباحاً – ٩:٠٠ مساءً">Saturday – Thursday: 10:00 AM – 9:00 PM</p>
-            <p class="text-xs text-slate-400" data-en="Friday: Emergency Consultations Only" data-ar="الجمعة: استشارات الطوارئ فقط">Friday: Emergency Consultations Only</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
-            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">💬</div>
-            <h4 class="font-bold text-[#0B1F33]" data-en="Direct Communication" data-ar="التواصل المباشر مع العيادة">Direct Communication</h4>
-            <div class="flex gap-3">
-              <a href="tel:+201001234567" class="flex-1 py-3 rounded-xl bg-[#0B1F33] text-white text-xs font-bold text-center">
-                📞 <span data-en="Call Clinic" data-ar="اتصال هاتفي">Call Clinic</span>
-              </a>
-              <a href="https://wa.me/201001234567" target="_blank" class="flex-1 py-3 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">
-                💬 WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="md:col-span-7 bg-slate-200 rounded-3xl border border-slate-300 overflow-hidden relative aspect-square md:aspect-auto flex items-center justify-center">
-          <div class="text-center space-y-3 p-8">
-            <div class="w-16 h-16 mx-auto rounded-full bg-[#0B1F33] text-[#1BA7E1] flex items-center justify-center text-2xl font-bold shadow-lg">🗺️</div>
-            <h3 class="font-bold text-[#0B1F33]" data-en="Interactive Google Map" data-ar="موقع العيادة على الخريطة">Interactive Google Map</h3>
-            <p class="text-xs text-slate-500 max-w-sm mx-auto" data-en="Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic." data-ar="اضغط أدناه لفتح التوجيه التلقائي عبر GPS إلى مركز الدكتور أحمد حسن.">Click below to open GPS navigation directly to Dr. Ahmed Hassan Dental Clinic.</p>
-            <button class="px-6 py-3 rounded-xl bg-[#1BA7E1] text-white font-bold text-xs shadow-md" data-en="Open in Google Maps" data-ar="افتح في خرائط جوجل">
-              Open in Google Maps
-            </button>
           </div>
         </div>
       </div>
@@ -584,12 +575,6 @@
         <p id="cert-desc" class="text-xs text-slate-500 font-medium">Verified Credential</p>
       </div>
 
-      <div class="border-2 border-dashed border-amber-300 p-6 rounded-2xl bg-amber-50/50 text-center space-y-2">
-        <div class="text-xs font-bold text-amber-800">ACCREDITED DENTAL SPECIALIST BOARD</div>
-        <div class="text-[11px] text-slate-600">This certifies that Dr. Ahmed Hassan has completed all clinical prerequisites and international examinations.</div>
-        <div class="pt-3 text-[10px] text-emerald-700 font-bold">✓ Official Gold Seal Verified</div>
-      </div>
-
       <button onclick="closeCertModal()" class="w-full py-3 rounded-xl bg-[#0B1F33] text-white font-bold text-xs" data-en="Close Window" data-ar="إغلاق">
         Close Window
       </button>
@@ -616,11 +601,10 @@
         </div>
         <div class="flex justify-between">
           <span class="text-slate-500" data-en="Status:" data-ar="حالة الطلب:">Status:</span>
-          <span class="font-bold text-emerald-600" data-en="Recorded & Ready" data-ar="مسجل وجاهز للتأكيد">Recorded & Ready</span>
+          <span class="font-bold text-emerald-600" data-en="Recorded & Reserved" data-ar="مسجل ومحجوز باسمك">Recorded & Reserved</span>
         </div>
       </div>
 
-      <!-- Send Direct to WhatsApp CTA Button -->
       <a id="whatsapp-direct-link" href="#" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2">
         <span>💬</span>
         <span data-en="Send Details to Doctor via WhatsApp" data-ar="إرسال بيانات الحجز لواتساب الدكتور فوراً">Send Details to Doctor via WhatsApp</span>
@@ -633,9 +617,154 @@
   </div>
 
 
-  <!-- JAVASCRIPT CONTROLLER & BILINGUAL I18N SYSTEM -->
+  <!-- JAVASCRIPT CONTROLLER, BILINGUAL I18N & INTERACTIVE CALENDAR ENGINE -->
   <script>
     let currentLang = 'en';
+
+    // Calendar Data State
+    let weekOffset = 0;
+    let selectedDayIndex = 0; // Saturday
+    let selectedTimeSlot = null;
+
+    // Simulated schedule days template
+    const daysTemplate = [
+      { nameEn: "Sat", nameAr: "السبت", dateStr: "Sep 07" },
+      { nameEn: "Sun", nameAr: "الأحد", dateStr: "Sep 08" },
+      { nameEn: "Mon", nameAr: "الإثنين", dateStr: "Sep 09" },
+      { nameEn: "Tue", nameAr: "الثلاثاء", dateStr: "Sep 10" },
+      { nameEn: "Wed", nameAr: "الأربعاء", dateStr: "Sep 11" },
+      { nameEn: "Thu", nameAr: "الخميس", dateStr: "Sep 12" }
+    ];
+
+    // Slots template per day
+    const hoursTemplate = [
+      { time: "10:00 AM", arTime: "١٠:٠٠ صباحاً" },
+      { time: "11:30 AM", arTime: "١١:٣٠ صباحاً" },
+      { time: "01:00 PM", arTime: "٠١:٠٠ ظهراً" },
+      { time: "04:30 PM", arTime: "٠٤:٣٠ عصراً" },
+      { time: "06:00 PM", arTime: "٠٦:٠٠ مساءً" },
+      { time: "07:30 PM", arTime: "٠٧:٣٠ مساءً" },
+      { time: "08:30 PM", arTime: "٠٨:٣٠ مساءً" }
+    ];
+
+    // Simulated reserved slots store
+    let reservedSlotsStore = {
+      "Sat-11:30 AM": true,
+      "Mon-04:30 PM": true,
+      "Wed-06:00 PM": true
+    };
+
+    function renderCalendar() {
+      const daysContainer = document.getElementById('calendar-days-container');
+      const slotsContainer = document.getElementById('calendar-slots-container');
+      if (!daysContainer || !slotsContainer) return;
+
+      // Render Days
+      daysContainer.innerHTML = '';
+      daysTemplate.forEach((d, idx) => {
+        const isSelected = (idx === selectedDayIndex);
+        const dayBtn = document.createElement('button');
+        dayBtn.type = 'button';
+        dayBtn.onclick = () => selectDay(idx);
+        dayBtn.className = `p-3 rounded-xl border text-center transition-all cursor-pointer ${
+          isSelected 
+            ? 'bg-[#0B1F33] text-white border-[#0B1F33] shadow-md' 
+            : 'bg-white text-slate-800 border-slate-200 hover:border-[#1BA7E1]'
+        }`;
+
+        const dayName = (currentLang === 'ar') ? d.nameAr : d.nameEn;
+        dayBtn.innerHTML = `
+          <div class="text-xs font-extrabold">${dayName}</div>
+          <div class="text-[11px] opacity-80 mt-0.5">${d.dateStr}</div>
+        `;
+        daysContainer.appendChild(dayBtn);
+      });
+
+      // Render Time Slots for Selected Day
+      const curDay = daysTemplate[selectedDayIndex];
+      const dayNameText = (currentLang === 'ar') ? curDay.nameAr : curDay.nameEn;
+      
+      document.getElementById('slots-header-title').innerText = (currentLang === 'ar')
+        ? `المواعيد المتاحة ليوم (${dayNameText} ${curDay.dateStr}):`
+        : `Available Hours for (${dayNameText} ${curDay.dateStr}):`;
+
+      slotsContainer.innerHTML = '';
+      hoursTemplate.forEach((h) => {
+        const slotKey = `${curDay.nameEn}-${h.time}`;
+        const isBooked = reservedSlotsStore[slotKey];
+        const isSelected = (selectedTimeSlot === slotKey);
+
+        const slotBtn = document.createElement('button');
+        slotBtn.type = 'button';
+
+        if (isBooked) {
+          slotBtn.disabled = true;
+          slotBtn.className = 'p-3 rounded-xl border border-slate-200 bg-slate-200 text-slate-400 text-xs font-bold cursor-not-allowed opacity-75 relative';
+          slotBtn.innerHTML = `
+            <div>${(currentLang === 'ar') ? h.arTime : h.time}</div>
+            <div class="text-[10px] text-red-600 font-semibold mt-1">🔒 ${(currentLang === 'ar') ? 'محجوز' : 'Booked'}</div>
+          `;
+        } else {
+          slotBtn.onclick = () => selectTimeSlot(slotKey, h);
+          slotBtn.className = `p-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+            isSelected
+              ? 'bg-[#1BA7E1] text-white border-[#1BA7E1] shadow-lg ring-2 ring-sky-200'
+              : 'bg-white text-slate-800 border-emerald-400 hover:bg-emerald-50 text-emerald-800'
+          }`;
+          
+          const timeDisplay = (currentLang === 'ar') ? h.arTime : h.time;
+          slotBtn.innerHTML = `
+            <div>${timeDisplay}</div>
+            <div class="text-[10px] ${isSelected ? 'text-white' : 'text-emerald-600'} font-semibold mt-1">
+              ${isSelected ? '✓ ' + ((currentLang === 'ar') ? 'مختار' : 'Selected') : '🟢 ' + ((currentLang === 'ar') ? 'متاح' : 'Available')}
+            </div>
+          `;
+        }
+        slotsContainer.appendChild(slotBtn);
+      });
+
+      // Update Summary Banner
+      const summaryEl = document.getElementById('selected-slot-summary');
+      if (selectedTimeSlot) {
+        const parts = selectedTimeSlot.split('-');
+        summaryEl.innerText = (currentLang === 'ar')
+          ? `✓ الموعد المختار: ${dayNameText} (${parts[1]})`
+          : `✓ Selected Slot: ${dayNameText} (${parts[1]})`;
+        summaryEl.className = 'text-xs font-extrabold text-emerald-600';
+      } else {
+        summaryEl.innerText = (currentLang === 'ar') ? 'يرجى اختيار موعد متاح بالضغط عليه' : 'Please select an available slot';
+        summaryEl.className = 'text-xs text-[#1BA7E1] font-semibold';
+      }
+    }
+
+    function selectDay(idx) {
+      selectedDayIndex = idx;
+      renderCalendar();
+    }
+
+    function selectTimeSlot(slotKey, hourObj) {
+      selectedTimeSlot = slotKey;
+      const curDay = daysTemplate[selectedDayIndex];
+      const dayName = (currentLang === 'ar') ? curDay.nameAr : curDay.nameEn;
+      const timeDisplay = (currentLang === 'ar') ? hourObj.arTime : hourObj.time;
+
+      const fullText = `${dayName} (${curDay.dateStr}) @ ${timeDisplay}`;
+      document.getElementById('booking-date-text').value = fullText;
+
+      renderCalendar();
+    }
+
+    function shiftWeek(offset) {
+      weekOffset += offset;
+      const weekLabel = document.getElementById('current-week-label');
+      if (weekOffset === 0) {
+        weekLabel.innerText = 'Week of Sep 07 - Sep 13';
+      } else if (weekOffset > 0) {
+        weekLabel.innerText = `Next Week (+${weekOffset})`;
+      } else {
+        weekLabel.innerText = `Previous Week (${weekOffset})`;
+      }
+    }
 
     function toggleLanguage() {
       currentLang = (currentLang === 'en') ? 'ar' : 'en';
@@ -656,6 +785,8 @@
         const text = el.getAttribute('data-' + currentLang);
         if (text) el.innerText = text;
       });
+
+      renderCalendar();
     }
 
     function navigateToPage(pageId) {
@@ -663,6 +794,10 @@
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) targetPage.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pageId === 'booking') {
+        renderCalendar();
+      }
     }
 
     function openCertModal(title, desc) {
@@ -682,29 +817,35 @@
     function handleBookingSubmit(event) {
       event.preventDefault();
       
+      if (!selectedTimeSlot) {
+        alert(currentLang === 'ar' ? 'الرجاء اختيار موعد متاح من جدول المواعيد أولاً!' : 'Please select an available slot from the calendar first!');
+        return;
+      }
+
       const name = document.getElementById('booking-name').value;
       const phone = document.getElementById('booking-phone').value;
       const service = document.getElementById('booking-service').value;
-      const date = document.getElementById('booking-date').value;
+      const dateText = document.getElementById('booking-date-text').value;
       const notes = document.getElementById('booking-notes').value;
 
-      // Generate random reference code
+      // Mark slot as booked so no one else can select it
+      reservedSlotsStore[selectedTimeSlot] = true;
+      renderCalendar();
+
       const refNo = 'AH-2026-' + Math.floor(1000 + Math.random() * 9000);
       document.getElementById('booking-ref-no').innerText = refNo;
 
-      // Format WhatsApp Message to Doctor (+201001234567)
       const waMsg = `مرحباً دكتور أحمد، أود تأكيد حجز موعد كشف بمركزكم:%0A%0A` +
                     `👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
                     `📱 *الهاتف:* ${encodeURIComponent(phone)}%0A` +
                     `🦷 *الخدمة:* ${encodeURIComponent(service)}%0A` +
-                    `📅 *الموعد المفضل:* ${encodeURIComponent(date)}%0A` +
+                    `📅 *الموعد المحجوز:* ${encodeURIComponent(dateText)}%0A` +
                     `📝 *ملاحظات:* ${encodeURIComponent(notes || 'لا يوجد')}%0A` +
                     `🔖 *رقم الحجز المرجعي:* ${refNo}`;
 
       const waUrl = `https://wa.me/201001234567?text=${waMsg}`;
       document.getElementById('whatsapp-direct-link').href = waUrl;
 
-      // Open Modal
       const modal = document.getElementById('booking-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -715,6 +856,8 @@
       modal.classList.add('hidden');
       modal.classList.remove('flex');
       document.getElementById('booking-form').reset();
+      selectedTimeSlot = null;
+      renderCalendar();
       navigateToPage('home');
     }
 
@@ -722,6 +865,11 @@
       const drawer = document.getElementById('mobile-drawer');
       drawer.classList.toggle('hidden');
     }
+
+    // Initial load calendar render
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCalendar();
+    });
   </script>
 </body>
 </html>
